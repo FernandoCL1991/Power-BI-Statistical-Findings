@@ -22,11 +22,19 @@ This project involves performing a detailed analysis of a dataset to understand 
 
 ## Steps Performed
 
+## Pre-step
+
+- A connection to a Microsoft Azure DB was established.
+- **Training** data table was retrieved for the anaysis.
+
 ### 1. Data Preparation
 
 - A **Date Table** was created in Power BI with columns for Year, Month, and other date-specific fields.
 - A new **Year** column was derived for easier aggregation.
 - Relationships were established between the Date Table and the Training Table.
+- **Data types** were changed correspondingly.
+- **Image Classes Bins** were created to synthesize classes into more concise groups. The groups created were: Animals, Innanimate Objects, Nature, Person, and Vehicles.
+
 
 ### 2. Calculation of Yearly Class Contribution
 
@@ -85,55 +93,40 @@ This project involves performing a detailed analysis of a dataset to understand 
 8. Handling of outliers: a decision was made to leave outliers as is given that the data is most probable to be medical related, hence the outliers can give a better understanding of rare effects on instances.
 
 ## Key Findings
-Image Classes Bins: Animals, Innanimate Objects, Nature, Person, Vehicles
 
-- Image classes contributed similarly accross time (month and years) towards the Target variable.
-- Since the data spans from March 2016 to February 2019, a consistent trend couldn't be seen. The years of 2016 and 2019 need to have more data for a deeper analysis. For those 'complete' years with data accross all months, an overall similar trend accross all continuous variables could be seen.
-- As seen in the Correlation Heatmap, there were no positively correlated variables towards the Target variable. The correlation coefficient ranged from -0.05 (HRT) to 0.06 (XGT). This prevented a robust feature selection to be made for further modeling.
-- The clustered column chart for the binary variables BAZ, FYT, and LGH, show also a consistent count of instances for all Image Classes Bins accross all years.
-Trends can be seen as:
+- Image classes contributed similarly accross time (month and years) towards the Target variable, except for the Person class which only contributed towards Target with 5,374,823.31, while every other class contributed from a range of 10 to 14,000,000 towards Target. This has to do with how classes were distributed to each class group were 2 or more classes were added to classes, only 1 class was added to the 'Person' class.
+- Since the data spans from March 2016 to February 2019, a consistent trend or seasonality couldn't be seen. The years of 2016 and 2019 need to have more data for a deeper analysis. For those 'complete' years with data accross all months, an overall similar trend accross all continuous variables could be seen.
+- As seen in the **Correlation Heatmap**, there were no positively correlated variables towards the Target variable. The correlation coefficient ranged from -0.05 (HRT) to 0.06 (XGT). This prevented a robust feature selection to be made for further modeling.
+- The **clustered column chart for the binary variables BAZ, FYT, and LGH**, show also a consistent count of instances for all Image Classes Bins accross all years, with some instance imbalances: Binary variable LGH contributed with just 237 instances in the data while BAZ and FYT contributed with 328 and 320 respectively. Trends can be seen as:
 
-a. A slight upward trend on Animals, Nature, and Vehicles classes.
+a. A somewhat consisten trend on Nature and Vehicles classes with steeper variances of LGH of 2 to 9 points.
 
-b. A somewhat steeper upward trend for the class Innanimate Object.
+b. A somewhat upward trend for the class Innanimate Object, although showing high variability for sum of BAZ and sum of FYT. 
 
-c. Person class has the fewer instances accross the dataset compared to the other classes: the instance average is of 10 (log scaled) and accross all years, all the different classes show figures ranging from 3 to 9, with only two exceptions: 2017 BAZ with 13 and 2018 FYT with 11. In 2019 there were no instances.
+c. Person class has the fewer instances accross the dataset compared to the other classes: the instance average is of 10 (log scaled) and accross all years, all the different classes show figures ranging from 3 to 9, with only two exceptions: 2017 BAZ with 13 and 2018 FYT with 11. In 2019 there were no instances. FYT stayed consistent accross all years, except for 2019 the other two show high variability.
 
-An upward trend can be seen for the Innanimate Object and 
+d. A somewhat consistent trend for the Animals class where all three variables stayed consistent for 2016 to 2018 with values ranging from 19 to 34.
+
+- All classes see a diminishing instance count for year 2019, were data was only collected for the months of January and February.
 
 - Certain image classes contributed significantly to yearly targets, while others had negligible impact.
-- Correlation analysis revealed weak relationships between variables, especially towards the Target variable. 
-
-
-
+- Correlation analysis revealed weak relationships between variables, especially towards the Target variable.
 
 ## Future Work
 
-- Incorporate machine learning models to predict class contributions for upcoming years.
-- Perform deeper time-series analysis to understand trends over months and seasons.
-- Expand the project to include external data for richer insights.
+- Removal of Outliers: After removing outliers, the correlation heatmap could reveal stronger and more accurate relationships between variables like Target, Binary, and Continuous features. Outliers often skew results, masking underlying patterns or weakening correlations. By eliminating these points, the data becomes less variable and more representative, allowing for clearer trends and higher correlation coefficients. This adjustment ensures a more reliable basis for feature selection and modeling in subsequent analysis steps.
+- Data consistency: Overall, for further analysis only the years of 2016 to 2018 should be considered and disregard year 2019. This can improve trend and seasonality analysis.
+- An even split among classes should be considered for furhter analysis, this would aliviate a bias towards the analysis unintentionally set in the beginning.
+- No high correlation were obseverved from any of the variables, continuous or binary ones, towards Target.
+- Implement predictive modeling like time series forecasting or regression to predict future trends and values based on the historical data.
+- Consider doing any of the next statistical methods to further enhance feature engineering:
 
-## Repository Structure
+**Mutual Information (MI):**
+Calculate MI scores between the Target and all variables (binary and continuous) to capture both linear and non-linear dependencies. Prioritize variables with higher MI scores for further modeling, as they provide the most information about the Target. Use mutual_info_regression (Scikit-learn) to handle your continuous and binary data effectively.
 
-- **Python Scripts**: Includes Python scripts used for heatmap generation and correlation analysis.
-- **Power BI Files**: Contains the `.pbix` file with all dashboards and visualizations.
-- **Data**: Cleaned datasets used in the analysis.
-- **README.md**: This documentation file.
-
-## How to Use This Repository
-
-1. Clone the repository:
-   ```bash
-   git clone <repository_url>
-   ```
-2. Open the Power BI file (`.pbix`) to explore dashboards.
-3. Review Python scripts for additional analysis and heatmap generation.
-
-## Acknowledgments
-
-Special thanks to Insulet for providing the opportunity to perform this analysis and to the data analysis community for valuable insights and resources.
+**Polynomial Features:**
+Create higher-degree and interaction terms for continuous variables to capture non-linear relationships with the Target. For example, squaring or combining features like counts or metrics may reveal stronger patterns. Use Scikit-learn’s PolynomialFeatures to generate these features and evaluate their impact on the Target's relationship.
 
 ## Contact
 
-For questions or collaboration opportunities, please reach out at [Your Contact Email/LinkedIn Profile].
-
+For questions or collaboration opportunities, please reach out at: https://www.linkedin.com/in/fernando-cl-data-analyst/
