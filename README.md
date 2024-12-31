@@ -95,6 +95,7 @@ This project involves performing a detailed analysis of a dataset to understand 
 ## Key Findings
 
 - Image classes contributed similarly accross time (month and years) towards the Target variable, except for the Person class which only contributed towards Target with 5,374,823.31, while every other class contributed from a range of 10 to 14,000,000 towards Target. This has to do with how classes were distributed to each class group were 2 or more classes were added to classes, only 1 class was added to the 'Person' class.
+- Scatter Plots accross all variables didn't show uniform distributions.
 - Since the data spans from March 2016 to February 2019, a consistent trend or seasonality couldn't be seen. The years of 2016 and 2019 need to have more data for a deeper analysis. For those 'complete' years with data accross all months, an overall similar trend accross all continuous variables could be seen.
 - As seen in the **Correlation Heatmap**, there were no positively correlated variables towards the Target variable. The correlation coefficient ranged from -0.05 (HRT) to 0.06 (XGT). This prevented a robust feature selection to be made for further modeling.
 - The **clustered column chart for the binary variables BAZ, FYT, and LGH**, show also a consistent count of instances for all Image Classes Bins accross all years, with some instance imbalances: Binary variable LGH contributed with just 237 instances in the data while BAZ and FYT contributed with 328 and 320 respectively. Trends can be seen as:
