@@ -92,9 +92,12 @@ Image Classes Bins: Animals, Innanimate Objects, Nature, Person, Vehicles
 - As seen in the Correlation Heatmap, there were no positively correlated variables towards the Target variable. The correlation coefficient ranged from -0.05 (HRT) to 0.06 (XGT). This prevented a robust feature selection to be made for further modeling.
 - The clustered column chart for the binary variables BAZ, FYT, and LGH, show also a consistent count of instances for all Image Classes Bins accross all years.
 Trends can be seen as:
+
 a. A slight upward trend on Animals, Nature, and Vehicles classes.
+
 b. A somewhat steeper upward trend for the class Innanimate Object.
-c. Person class has the fewer instances accross the dataset compared to the other classes.
+
+c. Person class has the fewer instances accross the dataset compared to the other classes: the instance average is of 10 (log scaled) and accross all years, all the different classes show figures ranging from 3 to 9, with only two exceptions: 2017 BAZ with 13 and 2018 FYT with 11. In 2019 there were no instances.
 
 An upward trend can be seen for the Innanimate Object and 
 
