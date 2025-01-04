@@ -2,7 +2,10 @@
 
 # Data Analysis Project: Target Contributions by Class and Year
 
-## Link to Project: https://app.powerbi.com/groups/me/reports/095baa62-26b7-4498-99af-bbbfc5fddab7/7543321a26c965164723?experience=power-bi
+## Link to Project: [https://app.powerbi.com/groups/me/reports/095baa62-26b7-4498-99af-bbbfc5fddab7/7543321a26c965164723?experience=power-bi](https://app.powerbi.com/groups/me/reports/194933ab-58ba-40f9-9f23-917a22f8ddc6/7543321a26c965164723?experience=power-bi)
+
+## https://app.powerbi.com/groups/me/reports/194933ab-58ba-40f9-9f23-917a22f8ddc6/7543321a26c965164723?experience=power-bi
+
 
 ## Project Overview
 
@@ -32,6 +35,8 @@ This project involves performing a detailed analysis of a dataset to understand 
 - A **Date Table** was created in Power BI with columns for Year, Month, and other date-specific fields.
 - A new **Year** column was derived for easier aggregation.
 - Relationships were established between the Date Table and the Training Table.
+- A new table was created **Aggregated Class Target** specific to how classes contributed overall towards Target and had a many-yo-many relationship to Training Table.
+- A **Unique Years** table was created to enhance the performance of different visualizations with a one-to-many relationship to Aggregated Class Target table and another to the Date Table.
 - **Data types** were changed correspondingly.
 - **Image Classes Bins** were created to synthesize classes into more concise groups. The groups created were: Animals, Innanimate Objects, Nature, Person, and Vehicles.
 
